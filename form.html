@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script  src="script2.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .details-form {
+            border: 3px solid #ffa07a;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .details-form h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .details-form form {
+            text-align: center;
+        }
+
+        .details-form label {
+            display: flex;
+            align-items: center; /* Align radio button with text vertically */
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .details-form input[type="text"],
+        .details-form input[type="email"]
+        {
+            width: 250px;
+            padding: 3px;
+            margin: 2px;
+            font-size: 16px;
+            border: 2px solid #8c90f8;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        Custom radio button indicators 
+         .details-form input[type="radio"] {
+            position:absolute;
+            opacity: 1;
+        }
+
+        .details-form .checkmark {
+            position: relative;
+            width: 5px;
+            height: 10px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .details-form input[type="radio"]:checked + .checkmark {
+            background-color: #3db93d;
+            border-color: #3db93d;
+        }
+
+        .details-form input[type="radio"]:checked + .checkmark::before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgb(255, 37, 37);
+            animation: scaleIn 0.3s ease;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="details-form">
+        <h1 style="text-align: center;">Enter Details</h1>
+        <form >
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Name" size="30px"><br>
+            <label>Address</label>
+            <input type="text" id="address" placeholder="Enter Address" size="40px"><br>
+            <label>Contact Number</label>
+            <input type="text" id="number" placeholder="Contact Number" size="30px"><br>
+            <label>Email</label>
+            <input type="email" id="email" placeholder="E-Mail" size="30px"><br>
+            <p>Select your blood group:</p>
+            <input type="radio" name="b" value="A+">A+<br>
+            <input type="radio" name="b" value="A-">A-<br>
+            <input type="radio" name="b" value="B+">B+<br>
+            <input type="radio" name="b" value="B-">B-<br>
+            <input type="radio" name="b" value="AB+">AB+<br>
+            <input type="radio" name="b" value="AB-">AB-<br>
+            <input type="radio" name="b" value="O+">O+<br>
+            <input type="radio" name="b" value="O-">O-<br>
+            <!-- Using the "performMultipleOperations" function -->
+            <button onclick="performMultipleOperations()">Submit</button>
+        </form>
+
+        <script>
+            function performMultipleOperations() {
+                one();
+                two();
+            }
+
+            function one() {
+                storeAndDisplay();
+            }
+
+            function two() {
+                window.open('welcome.html');
+            }
+        </script>
+    </div>
+</body>
+</html>

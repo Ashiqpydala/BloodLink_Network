@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Data Page</title>
+</head>
+<body>
+  <h1>View Data</h1>
+  <div id="displayDetails"></div>
+
+  <script>
+    function clearLocalStorage() {
+      // Clear the data from Local Storage
+      localStorage.removeItem('userDetailsArray');
+
+      // Display a message indicating that data has been cleared
+      const displayDiv = document.getElementById('displayDetails');
+      displayDiv.textContent = 'Data has been reset.';
+    }
+
+    // Retrieve data from Local Storage and display it on the page
+    const userDetailsJSON = localStorage.getItem('userDetailsArray');
+    const userDetailsArray = JSON.parse(userDetailsJSON);
+
+    // Check if data is present in Local Storage
+    if (userDetailsArray && userDetailsArray.length > 0) {
+      const displayDiv = document.getElementById('displayDetails');
+      displayDiv.innerHTML = '';
+
+      // Loop through the user details array and display each set of details
+      userDetailsArray.forEach(userDetails => {
+        displayDiv.innerHTML += `
+          <p>Name: ${userDetails.name}</p>
+          <p>Address: ${userDetails.address}</p>
+          <p>Contact Number: ${userDetails.number}</p>
+          <p>Email: ${userDetails.email}</p>
+          <p>BloodGroup: ${userDetails.b}</p>
+          <hr>
+        `;
+      });
+
+      // Set a timeout to clear Local Storage after a certain period (e.g., 24 hours)
+      const resetPeriodInHours = 0.016;
+      const resetPeriodInMilliseconds = resetPeriodInHours * 60 * 60 * 1000; // Convert hours to milliseconds
+      setTimeout(clearLocalStorage, resetPeriodInMilliseconds);
+    } else {
+      const displayDiv = document.getElementById('displayDetails');
+      displayDiv.textContent = 'No data available.';
+    }
+  </script>
+  <button onclick="window.open('welcome.html')" style="align-items: center;">Done</button>
+</body>
+</html>

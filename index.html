@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login and Registration</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #b1ffe5;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-form {
+      width: 300px;
+      height: 400px;
+      background-color: #ff5353;
+      border: 2px solid #7dfffd;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    .login-form h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"],
+    .login-form button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      padding-left: 10px;
+    }
+
+    .login-form button {
+      background-color: #3db93d;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-form button:hover {
+      background-color: #2c912c;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-form">
+      <h2>Login</h2>
+      <input type="text" id="login-username" placeholder="Username">
+      <input type="password" id="login-password" placeholder="Password">
+      <button onclick="validateLogin()">Login</button>
+    </div>
+  </div>
+
+  <script>
+    function validateLogin() {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+
+      // Simple validation to check if the username and password are not empty
+      if (username.trim() === '' || password.trim() === '') {
+        alert('Username and password are required.');
+        return;
+      }
+
+      // Here, you can make an AJAX call to the server to validate the login credentials.
+      // For this example, we'll assume that the login is successful with any non-empty username and password.
+      if (username == "blooddonor" || username == "bloodreceiver") {
+        if (password == "1234" || password == "1234") {
+          alert('Login successful!');
+          window.location.href = 'welcome.html';
+        } else {
+          alert('Invalid password');
+        }
+      } else {
+        alert('Invalid Username');
+      }
+    }
+  </script>
+</body>
+</html>
